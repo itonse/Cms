@@ -4,9 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableFeignClients
 @SpringBootApplication
+@EnableJpaAuditing   // 베이스 엔티티의 @CreatedDate 와 @LastModifiedDate 기능 활성화
+@EnableJpaRepositories   // Spring Data JPA 레파지토리 기능 활성화
 @RequiredArgsConstructor
 public class UserApplication {
 
