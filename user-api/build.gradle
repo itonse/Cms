@@ -6,10 +6,12 @@ plugins {
 
 group 'com.itonse'
 version '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
 
 repositories {
     mavenCentral()
 }
+
 ext{
     set('springCloudVersion', "2021.0.1")
 }
@@ -24,16 +26,21 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    runtimeOnly 'com.h2database:h2'
+    implementation 'mysql:mysql-connector-java:8.0.33'
+
+    testImplementation 'com.h2database:h2'  // H2 DB 는 테스트 할 때만 사용
+
+    implementation 'org.apache.commons:commons-lang3:3.12.0' // 문자열 조작, 숫자 처리, 날짜 및 시간 조작, 배열 및 컬렉션 조작 등 다양한 유틸 기능을 제공
 
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    implementation 'org.springframework.data:spring-data-envers'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 }
 
 dependencyManagement {
