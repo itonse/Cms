@@ -1,10 +1,7 @@
 package com.itonse.cms.user.domain.model;
 
 import com.itonse.cms.user.domain.SignUpForm;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.envers.AuditOverride;
 
 import javax.persistence.*;
@@ -15,6 +12,7 @@ import java.util.Locale;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Setter
 @Getter
 @Builder
 @AuditOverride(forClass = BaseEntity.class)   // 베이스엔티티 클래스 상속받음
@@ -33,9 +31,9 @@ public class Customer extends BaseEntity {
     private String phone;;
     private LocalDate birth;   // "yyyy-MM-dd"
 
-    private LocalDateTime verifyExpiredAt;
-    private String verificationCode;
-    private boolean verify;
+    private LocalDateTime verifyExpiredAt;   // 인증 만료 기한 (1일)
+    private String verificationCode;   // 회원가입시 인증코드
+    private boolean verify;   // 회원가입시 이메일 인증 여부
 
     public static Customer from(SignUpForm form) {
         return Customer.builder()
