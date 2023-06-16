@@ -34,6 +34,7 @@ public class Customer extends BaseEntity {
     private LocalDateTime verifyExpiredAt;   // 인증 만료 기한 (1일)
     private String verificationCode;   // 회원가입시 인증코드
     private boolean verify;   // 회원가입시 이메일 인증 여부
+    private Integer balance;  // 예치금
 
     public static Customer from(SignUpForm form) {
         return Customer.builder()

@@ -2,16 +2,15 @@ package com.itonse.cms.user.controller;
 
 import com.itonse.cms.domain.config.JwtAuthenticationProvider;
 import com.itonse.cms.domain.domain.common.UserVo;
+import com.itonse.cms.user.domain.customer.ChangeBalanceForm;
 import com.itonse.cms.user.domain.customer.CustomerDto;
 import com.itonse.cms.user.domain.model.Customer;
 import com.itonse.cms.user.exception.CustomException;
+import com.itonse.cms.user.service.customer.CustomerBalanceService;
 import com.itonse.cms.user.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static com.itonse.cms.user.exception.ErrorCode.NOT_FOUND_USER;
 
@@ -22,6 +21,7 @@ public class CustomerController {
 
     private final JwtAuthenticationProvider provider;
     private final CustomerService customerService;
+    private final CustomerBalanceService customerBalanceService;
 
     @GetMapping("/getInfo")  // 필터 테스트
     public ResponseEntity<CustomerDto> getInfo(@RequestHeader(name = "X-AUTH-TOKEN") String token) {
@@ -33,4 +33,11 @@ public class CustomerController {
         return ResponseEntity.ok(CustomerDto.from(c));
     }
 
+    @PostMapping("/balance")
+    public ResponseEntity<Integer> changeBalance(@RequestHeader(name = "X-AUTH-TOKEN") String token,
+                                                 @RequestBody ChangeBalanceForm form) {
+        UserVo vo = provider.getUserVo(token);
+
+        return ResponseEntity.ok(customerBalanceService.changeBalance(vo.getId(), form).getCurrentMoney());
+    }
 }

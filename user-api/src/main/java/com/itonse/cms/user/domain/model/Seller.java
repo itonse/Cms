@@ -33,7 +33,6 @@ public class Seller extends BaseEntity {
     private LocalDateTime verificationExpireAt;
     private String verificationCode;
     private boolean verify;
-    private Integer balance;
 
     public static Seller from(SignUpForm form) {
         return Seller.builder()
