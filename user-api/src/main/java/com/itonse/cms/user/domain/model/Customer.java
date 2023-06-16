@@ -37,7 +37,7 @@ public class Customer extends BaseEntity {
 
     public static Customer from(SignUpForm form) {
         return Customer.builder()
-                .email(form.getEmail().toLowerCase(Locale.ROOT))  // 유니크값 검사
+                .email(form.getEmail().toLowerCase(Locale.ROOT))   // 유니크 제약 조건을 지키키: 대소문자 구분하지 않는 검색과 비교를 수행
                 .password(form.getPassword())
                 .name(form.getName())
                 .birth(form.getBirth())

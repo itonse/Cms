@@ -36,4 +36,3 @@ out/
 ### VS Code ###
 .vscode/
 *.properties
-com/itonse/cms/user/client/MailgunClient.java

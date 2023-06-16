@@ -2,7 +2,7 @@ package com.itonse.cms.user.config.filter;
 
 import com.itonse.cms.domain.config.JwtAuthenticationProvider;
 import com.itonse.cms.domain.domain.common.UserVo;
-import com.itonse.cms.user.service.CustomerService;
+import com.itonse.cms.user.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 
 import javax.servlet.*;

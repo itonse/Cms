@@ -5,7 +5,7 @@ import com.itonse.cms.domain.domain.common.UserType;
 import com.itonse.cms.user.domain.SignInForm;
 import com.itonse.cms.user.domain.model.Customer;
 import com.itonse.cms.user.exception.CustomException;
-import com.itonse.cms.user.service.CustomerService;
+import com.itonse.cms.user.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -2,6 +2,7 @@ package com.itonse.cms.user.service;
 
 import com.itonse.cms.user.domain.SignUpForm;
 import com.itonse.cms.user.domain.model.Customer;
+import com.itonse.cms.user.service.customer.SignUpCustomerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

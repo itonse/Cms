@@ -1,4 +1,4 @@
-package com.itonse.cms.user.service;
+package com.itonse.cms.user.service.customer;
 
 import com.itonse.cms.user.domain.model.Customer;
 import com.itonse.cms.user.domain.repository.CustomerRepository;

@@ -1,4 +1,4 @@
-package com.itonse.cms.user.service;
+package com.itonse.cms.user.service.customer;
 
 import com.itonse.cms.user.domain.SignUpForm;
 import com.itonse.cms.user.domain.model.Customer;
@@ -30,7 +30,21 @@ public class SignUpCustomerService {  // 고객 회원가입 서비스
     }
 
     @Transactional
-    public void verifyEmail(String email, String code) {   // 이메일 인증
+    public LocalDateTime changeCustomerValidateEmail(Long customerId, String verificationCode) {  // 이메일에 대한 validation 상태 변경
+        Optional<Customer> customerOptional = customerRepository.findById(customerId);
+
+        if (customerOptional.isPresent()) {
+            Customer customer = customerOptional.get();
+            customer.setVerificationCode(verificationCode);
+            customer.setVerifyExpiredAt(LocalDateTime.now().plusDays(1));  // 인증 만료일
+
+            return customer.getVerifyExpiredAt();
+        }
+        throw new CustomException(NOT_FOUND_USER);
+    }
+
+    @Transactional
+    public void verifyCustomerEmail(String email, String code) {   // 이메일 인증
         Customer customer = customerRepository.findByEmail(email)   // 이메일에 해당하는 회원 정보 가져오기
                 .orElseThrow(() -> new CustomException(NOT_FOUND_USER));
 
@@ -43,19 +57,5 @@ public class SignUpCustomerService {  // 고객 회원가입 서비스
         }
 
         customer.setVerify(true);   // 인증완료 처리
-    }
-
-    @Transactional
-    public LocalDateTime ChangeCustomerValidateEmail(Long customerId, String verificationCode) {  // 이메일에 대한 validation 상태 변경
-        Optional<Customer> customerOptional = customerRepository.findById(customerId);
-
-        if (customerOptional.isPresent()) {
-            Customer customer = customerOptional.get();
-            customer.setVerificationCode(verificationCode);
-            customer.setVerifyExpiredAt(LocalDateTime.now().plusDays(1));  // 인증 만료일
-
-            return customer.getVerifyExpiredAt();
-        }
-        throw new CustomException(NOT_FOUND_USER);
     }
 }
