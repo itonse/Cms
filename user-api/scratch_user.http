@@ -1,0 +1,49 @@
+### 회원가입 (고객)
+POST http://localhost:8081/signup/customer
+Content-Type: application/json
+
+{
+  "birth": "1997-06-16",
+  "email": "govl3dnjs@gmail.com",
+  "name": "myName",
+  "password": "pw",
+  "phone": "01011112222"
+}
+
+### 이메일 인증 (고객)
+GET http://localhost:8081/signup/customer/verify?email=govl3dnjs@gmail.com&code=nNPz9cdJCl
+
+
+### 로그인 (고객)
+POST http://localhost:8081/signin/customer
+Content-Type: application/json
+
+{
+  "email": "govl3dnjs@gmail.com",
+  "password": "pw"
+}
+
+### 회원 정보 조회 (고객)
+GET http://localhost:8081/customer/getInfo
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WHFUc1NzODhOTmNRTVZ3TkdnPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODY5MzI0MDgsImV4cCI6MTY4NzAxODgwOH0.ZYiAHqneoGE5QzRtx2wanP2TunTePP4njscYXs2EvBg
+
+
+### 잔액 변경 (고객)
+POST http://localhost:8081/customer/balance
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WHFUc1NzODhOTmNRTVZ3TkdnPSIsImp0aSI6IlN1YkhlS1VSUnJlUVkrV1NPbkJrdGc9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODY5MzI0MDgsImV4cCI6MTY4NzAxODgwOH0.ZYiAHqneoGE5QzRtx2wanP2TunTePP4njscYXs2EvBg
+
+{
+  "from": "admin",
+  "message": "회원가입 축하 적립금 지급",
+  "money": 8000
+}
+
+
+#######################
+
+### 회원가입 (셀러)
+
+### 로그인 (셀러)
+

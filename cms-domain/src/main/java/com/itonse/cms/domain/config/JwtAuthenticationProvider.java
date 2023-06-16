@@ -14,7 +14,7 @@ import java.util.Objects;
 public class JwtAuthenticationProvider {  // 시크릿키를 HS256으로 알고리즘을 해서 JWT 의 'VERIFY SIGNATURE' 에 넣음
     private String secretKey = "secretKey";
 
-    private long tokenValidTime = 1000L * 60 * 60 * 24;   // JWT 토큰 유효기간: 1일
+    private long tokenValidTime = 1000L * 60 * 60 * 24;   // JWT 토큰 유효시간: 1일 (로그인 하고 하루 지나면 토큰이 만료되어 다시 로그인 필요)
 
     public String createToken(String userPk, Long id, UserType userType) {   // 토큰 생성
 

@@ -27,7 +27,7 @@ public class CustomerController {
     public ResponseEntity<CustomerDto> getInfo(@RequestHeader(name = "X-AUTH-TOKEN") String token) {
         UserVo vo = provider.getUserVo(token);
 
-        Customer c = customerService.findByIdAndEmail(vo.getId(), vo.getEmail())  // 모든 인증을 끝냈기 때문에 findBy~ 할 필요X 바로 findByid 로 값 가져와도 됨.
+        Customer c = customerService.findByIdAndEmail(vo.getId(), vo.getEmail())  // 모든 인증을 끝냈기 때문에 findBy~ 할 필요X 바로 findById 로 값 가져와도 됨.
                 .orElseThrow(() -> new CustomException(NOT_FOUND_USER));
 
         return ResponseEntity.ok(CustomerDto.from(c));
