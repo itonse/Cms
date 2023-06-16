@@ -2,7 +2,6 @@ package com.itonse.cms.user.config.filter;
 
 import com.itonse.cms.domain.config.JwtAuthenticationProvider;
 import com.itonse.cms.domain.domain.common.UserVo;
-import com.itonse.cms.user.service.customer.CustomerService;
 import com.itonse.cms.user.service.seller.SellerService;
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +10,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = "/customer/*")  // 필터가 적용 될 url 패턴
+@WebFilter(urlPatterns = "/seller/*")  // 필터가 적용 될 url 패턴
 @RequiredArgsConstructor
 public class SellerFilter implements Filter {
 

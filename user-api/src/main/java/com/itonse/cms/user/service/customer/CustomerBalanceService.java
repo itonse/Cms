@@ -23,7 +23,7 @@ public class CustomerBalanceService {
     public CustomerBalanceHistory changeBalance(Long customerId, ChangeBalanceForm form) throws CustomException {
         CustomerBalanceHistory customerBalanceHistory =  // 가장 마지막 잔액 내역 가져오기
                 customerBalanceHistoryRepository.findFirstByCustomer_IdOrderByIdDesc(customerId)
-                        .orElse(CustomerBalanceHistory.builder()  // 결제내역이 없는 경우
+                        .orElse(CustomerBalanceHistory.builder()  // 결제내역이 없는 경우 새로 생성
                                 .changeMoney(0)
                                 .currentMoney(0)
                                 .customer(customerRepository.findById(customerId)
@@ -44,6 +44,7 @@ public class CustomerBalanceService {
                 .build();
 
         customerBalanceHistory.getCustomer().setBalance(customerBalanceHistory.getCurrentMoney());
+         // History 를 통해 customer 의 balance 값을 변경: 연관관계를 이용해 다른 객체의 값을 변경
 
 
         return customerBalanceHistoryRepository.save(customerBalanceHistory);
