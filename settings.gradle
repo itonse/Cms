@@ -2,4 +2,5 @@ rootProject.name = 'cms'
 include 'user-api'
 include 'untitled'
 include 'cms-domain'
+include 'order-api'
 

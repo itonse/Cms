@@ -44,6 +44,22 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0W
 #######################
 
 ### 회원가입 (셀러)
+POST http://localhost:8081/signup/seller
+Content-Type: application/json
+
+{
+  "birth": "1999-06-16",
+  "email": "govl3dnjs@gmail.com",
+  "name": "김춘식",
+  "password": "pw",
+  "phone": "01011112222"
+}
 
 ### 로그인 (셀러)
+POST http://localhost:8081/signin/seller
+Content-Type: application/json
 
+{
+  "email": "govl3dnjs@gmail.com",
+  "password": "pw"
+}

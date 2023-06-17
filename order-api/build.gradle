@@ -6,7 +6,6 @@ plugins {
 
 group 'com.itonse'
 version '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 repositories {
     mavenCentral()
@@ -31,6 +30,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'mysql:mysql-connector-java:8.0.33'
 
+    // redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    testImplementation ('it.ozimov:embedded-redis:0.7.3'){
+        exclude group: "org.slf4j", module: "slf4j-simple"
+    }
+
     testImplementation 'com.h2database:h2'  // H2 DB 는 테스트 할 때만 사용
 
     implementation 'org.apache.commons:commons-lang3:3.12.0' // 문자열 조작, 숫자 처리, 날짜 및 시간 조작, 배열 및 컬렉션 조작 등 다양한 유틸 기능을 제공
@@ -44,6 +49,9 @@ dependencies {
     implementation 'org.springframework.data:spring-data-envers'   // 엔티티의 변경 이력을 관리하고 이력을 추적하기 위한 기능을 제공
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 dependencyManagement {
@@ -52,6 +60,6 @@ dependencyManagement {
     }
 }
 
-tasks.named('test') {
+test {
     useJUnitPlatform()
 }
