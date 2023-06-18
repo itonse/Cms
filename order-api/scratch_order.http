@@ -1,0 +1,24 @@
+### add product
+POST http://localhost:8082/seller/product
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WHFUc1NzODhOTmNRTVZ3TkdnPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjg3MDQ5NDI4LCJleHAiOjE2ODcxMzU4Mjh9.TtNopbnWsfKfFc3GzmUCVSF3nyEsT8zfmE4FKRCK_FM
+
+{
+  "description": "상품설명",
+  "itmes": [
+    {
+      "count": 5,
+      "name": "250",
+      "price": 135000
+    },
+    {
+      "count": 7,
+      "name": "270",
+      "price": 135000
+    }
+  ],
+  "name": "나이키 에어포스1"
+}
+
+### 이메일 인증 (고객)
+GET http://localhost:8081/signup/customer/verify?email=govl3dnjs@gmail.com&code=nNPz9cdJCl
