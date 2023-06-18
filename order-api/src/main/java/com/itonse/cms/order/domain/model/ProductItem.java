@@ -22,12 +22,12 @@ public class ProductItem extends BaseEntity{  // Product 는 상품 (컨버스 �
     private Long sellerId;
 
     @Audited
-    private String name;
+    private String name;  // ex) 245mm
 
     @Audited
     private Integer price;
 
-    private Integer count;
+    private Integer count;  // 수량
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
