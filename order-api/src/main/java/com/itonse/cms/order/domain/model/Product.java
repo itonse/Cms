@@ -29,6 +29,7 @@ public class Product extends BaseEntity{
 
     private String description;
 
+    // CascadeType.ALL 로 인해, Product 가 삭제되면 하위의 Product Items 도 모두 삭제
     @OneToMany(cascade = CascadeType.ALL)    // product (one) : productItem (many) 다대일 양방향 관계
     @JoinColumn(name = "product_id")
     private List<ProductItem> productItems = new ArrayList<>();

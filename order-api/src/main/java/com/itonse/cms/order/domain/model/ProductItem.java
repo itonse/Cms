@@ -29,7 +29,7 @@ public class ProductItem extends BaseEntity{  // Product 는 상품 (컨버스 �
 
     private Integer count;  // 수량
 
-    @ManyToOne(cascade = CascadeType.ALL)   // product (one) : productItem (many) 다대일 양방향 관계
+    @ManyToOne   // product (one) : productItem (many) 다대일 양방향 관계
     @JoinColumn(name = "product_id")
     private Product product;
 
