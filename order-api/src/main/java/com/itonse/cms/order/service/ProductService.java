@@ -45,4 +45,13 @@ public class ProductService {
         }
         return product;
     }
+
+    @Transactional
+    public void deleteProduct(Long sellerId, Long productId) {
+        Product product = productRepository.findBySellerIdAndId(sellerId, productId)
+                .orElseThrow(() -> new CustomException(NOT_FOUND_PRODUCT));
+
+        // CascadeType.All 설정을 했기 때문에 product 를 삭제하면 하위의 productItems 도 같이 삭제
+        productRepository.delete(product);
+    }
 }

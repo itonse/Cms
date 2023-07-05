@@ -63,3 +63,11 @@ X-AUTH-TOKEN:eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WH
   "name": "235",
   "price": 110000
 }
+
+### delete product (하위의 product_item 도 같이 지워진다)
+DELETE http://localhost:8082/seller/product?id=1
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WHFUc1NzODhOTmNRTVZ3TkdnPSIsImp0aSI6ImxhdjczSFhHR0ZpK2V3dEFsQzFWaFE9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjg4NTM5NTQ1LCJleHAiOjE2ODg2MjU5NDV9.eI5iAuNhCzDaqUrEgk0cBocBBs6rrrMmpB7ORk0Vttc
+
+### delete product_item
+DELETE http://localhost:8082/seller/product/item?id=3
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WHFUc1NzODhOTmNRTVZ3TkdnPSIsImp0aSI6ImxhdjczSFhHR0ZpK2V3dEFsQzFWaFE9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjg4NTM5NTQ1LCJleHAiOjE2ODg2MjU5NDV9.eI5iAuNhCzDaqUrEgk0cBocBBs6rrrMmpB7ORk0Vttc
