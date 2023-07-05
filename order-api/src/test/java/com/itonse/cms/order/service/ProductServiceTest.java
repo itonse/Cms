@@ -3,6 +3,7 @@ package com.itonse.cms.order.service;
 import com.itonse.cms.order.domain.model.Product;
 import com.itonse.cms.order.domain.product.AddProductForm;
 import com.itonse.cms.order.domain.product.AddProductItemForm;
+import com.itonse.cms.order.domain.repository.ProductItemRepository;
 import com.itonse.cms.order.domain.repository.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ class ProductServiceTest {
     private ProductService productService;
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private ProductItemRepository productItemRepository;
 
     @Test
     void ADD_PRODUCT_TEST() {

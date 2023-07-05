@@ -10,6 +10,7 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+    // product 에 있는 'productItems' 를 같이 가져올 것
     @EntityGraph(attributePaths = {"productItems"}, type = EntityGraph.EntityGraphType.LOAD)
     Optional<Product> findWithProductItemsById(Long id);
 

@@ -19,9 +19,9 @@ public class ProductItem extends BaseEntity{  // Product 는 상품 (컨버스 �
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long sellerId;
+    private Long sellerId;    // 어떤 기준으로 search 를 할지 모르기 때문에 일단 추가
 
-    @Audited
+    @Audited    // 클래스 전체가 아닌 변할 수 있는 항목에만 추가
     private String name;  // ex) 245mm
 
     @Audited
@@ -29,7 +29,7 @@ public class ProductItem extends BaseEntity{  // Product 는 상품 (컨버스 �
 
     private Integer count;  // 수량
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)   // product (one) : productItem (many) 다대일 양방향 관계
     @JoinColumn(name = "product_id")
     private Product product;
 

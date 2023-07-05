@@ -29,7 +29,7 @@ public class Product extends BaseEntity{
 
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)    // product (one) : productItem (many) 다대일 양방향 관계
     @JoinColumn(name = "product_id")
     private List<ProductItem> productItems = new ArrayList<>();
 

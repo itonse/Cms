@@ -3,6 +3,7 @@ package com.itonse.cms.order.service;
 import com.itonse.cms.order.domain.model.Product;
 import com.itonse.cms.order.domain.model.ProductItem;
 import com.itonse.cms.order.domain.product.AddProductItemForm;
+import com.itonse.cms.order.domain.repository.ProductItemRepository;
 import com.itonse.cms.order.domain.repository.ProductRepository;
 import com.itonse.cms.order.exception.CustomException;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import static com.itonse.cms.order.exception.ErrorCode.SAME_ITEM_NAME;
 @RequiredArgsConstructor
 public class ProductItemService {
     private final ProductRepository productRepository;
+    private final ProductItemRepository productItemRepository;
 
 
     @Transactional
@@ -31,7 +33,7 @@ public class ProductItemService {
         }
 
         ProductItem productItem = ProductItem.of(sellerId, form);
-        product.getProductItems().add(productItem);  // 레파지토리를 통해서 저장 안하고, add(리스트 기능) 를 통해 저장
+        product.getProductItems().add(productItem);  // Transactional 기능으로 커밋
         return product;
     }
 }
