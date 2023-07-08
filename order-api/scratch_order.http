@@ -1,7 +1,7 @@
 ### add product
 POST http://localhost:8082/seller/product
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WHFUc1NzODhOTmNRTVZ3TkdnPSIsImp0aSI6ImxhdjczSFhHR0ZpK2V3dEFsQzFWaFE9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjg4NTM5NTQ1LCJleHAiOjE2ODg2MjU5NDV9.eI5iAuNhCzDaqUrEgk0cBocBBs6rrrMmpB7ORk0Vttc
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WHFUc1NzODhOTmNRTVZ3TkdnPSIsImp0aSI6ImxhdjczSFhHR0ZpK2V3dEFsQzFWaFE9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjg4Nzk0Nzc4LCJleHAiOjE2ODg4ODExNzh9.SyfTpTyLVvo4ecfq2JcIrVItFKVxYTFHoEbwPIZvy7w
 
 {
   "description": "상품설명",
@@ -17,13 +17,13 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0W
       "price": 135000
     }
   ],
-  "name": "나이키 에어포스1"
+  "name": "나이키 에어포스2"
 }
 
 ### add product_item
 POST http://localhost:8082/seller/product/item
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WHFUc1NzODhOTmNRTVZ3TkdnPSIsImp0aSI6ImxhdjczSFhHR0ZpK2V3dEFsQzFWaFE9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjg4NTM5NTQ1LCJleHAiOjE2ODg2MjU5NDV9.eI5iAuNhCzDaqUrEgk0cBocBBs6rrrMmpB7ORk0Vttc
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WHFUc1NzODhOTmNRTVZ3TkdnPSIsImp0aSI6ImxhdjczSFhHR0ZpK2V3dEFsQzFWaFE9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjg4Nzk0Nzc4LCJleHAiOjE2ODg4ODExNzh9.SyfTpTyLVvo4ecfq2JcIrVItFKVxYTFHoEbwPIZvy7w
 
 {
   "count": 6,
@@ -71,3 +71,11 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0W
 ### delete product_item
 DELETE http://localhost:8082/seller/product/item?id=3
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WHFUc1NzODhOTmNRTVZ3TkdnPSIsImp0aSI6ImxhdjczSFhHR0ZpK2V3dEFsQzFWaFE9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjg4NTM5NTQ1LCJleHAiOjE2ODg2MjU5NDV9.eI5iAuNhCzDaqUrEgk0cBocBBs6rrrMmpB7ORk0Vttc
+
+### 상품 검색
+GET http://localhost:8082/search/product?name=나이키
+
+
+### 상품 디테일 검색
+GET http://localhost:8082/search/product/detail?productId=1
+Content-Type: application/json
