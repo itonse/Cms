@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CartService {
 
-    private final RedisClient redisClient;
+    private final RedisClient redisClient;     // 레디스 클라이언트 사용
 
     public Cart getCart(Long customerId) {
         return redisClient.get(customerId, Cart.class);
