@@ -44,7 +44,7 @@ class ProductServiceTest {
 
     }
 
-    private static AddProductForm makeProductForm (String name, String description, int itemCount) {
+    public static AddProductForm makeProductForm(String name, String description, int itemCount) {
         List<AddProductItemForm> itemForms = new ArrayList<>();
         for (int i = 0; i < itemCount; i++) {
             itemForms.add(makeProductItemForm(null, name + i));

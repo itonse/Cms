@@ -20,7 +20,13 @@ public class CartService {
     private final RedisClient redisClient;     // 레디스 클라이언트 사용
 
     public Cart getCart(Long customerId) {
-        return redisClient.get(customerId, Cart.class);
+        Cart cart = redisClient.get(customerId, Cart.class);
+        return cart != null ? cart : new Cart();
+    }
+
+    public Cart putCart(Long customerId, Cart cart) {
+        redisClient.put(customerId, cart);
+        return cart;
     }
 
     public Cart addCart(Long customerId, AddProductCartForm form) {

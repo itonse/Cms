@@ -25,6 +25,10 @@ public class Cart {
         messages.add(message);
     }
 
+    public Cart(Long customerId) {    // 생성자 추가 (products 와 messages 는 자동으로 초기화)
+        this.customerId = customerId;
+    }
+
     /**
      * 상품(+아이템)의 바뀐 데이터를 레디스에 저장했다가, 고객이 장바구니를 볼 때 확인할 수 있도록 할 것
      */
@@ -51,6 +55,7 @@ public class Cart {
                             .collect(Collectors.toList()))
                     .build();
         }
+
     }
 
     @AllArgsConstructor
@@ -72,4 +77,5 @@ public class Cart {
                     .build();
         }
     }
+
 }
