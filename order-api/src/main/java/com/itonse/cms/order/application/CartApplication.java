@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -57,6 +58,10 @@ public class CartApplication {
         return returnCart;
 
         // 3. 메세지를 보고 난 다음에는, 이미 본 메세지는 스팸이 되기 때문에 '제거'한다.
+    }
+
+    public void clearCart(Long customerId) {
+        cartService.putCart(customerId, null);
     }
 
     private Cart refreshCart(Cart cart) {
@@ -106,7 +111,7 @@ public class CartApplication {
                 }
                 if (cartProductItem.getCount() > pi.getCount()) {
                     isCountNotEnough = true;
-                    cartProductItem.setPrice(pi.getCount());
+                    cartProductItem.setCount(pi.getCount());
                 }
                 if (isPriceChanged && isCountNotEnough) {
                     tmpMessages.add(cartProductItem.getName() + "가격변동, 수량이 부족하여 구매 가능한 최대치로 변경되었습니다.");
@@ -141,8 +146,8 @@ public class CartApplication {
         // 상품 검사: form 에 해당하는 상품 찾기
         Cart.Product cartProduct = cart.getProducts().stream()
                 .filter(p -> p.getId().equals(form.getId()))
-                .findFirst()
-                .orElseThrow(() -> new CustomException(NOT_FOUND_PRODUCT));   // 상품이 없는 경우 에러처리
+                .findFirst().orElse(new Cart.Product().builder().id(product.getId())
+                        .items(Collections.emptyList()).build());
 
         // 수량 검사: 카트와 DB 에서 아이템 수량 가져오기. Map<아이템 id, 수량> (속도를 위해 Map 사용)
         Map<Long, Integer> cartItemCountMap = cartProduct.getItems().stream()
@@ -154,6 +159,9 @@ public class CartApplication {
         return form.getItems().stream().noneMatch(    // 조건에 일치하지 않는 항목이 하나도 없다면 true 반환
                 formItem -> {
                     Integer cartCount = cartItemCountMap.get(formItem.getId());
+                    if(cartCount == null) {
+                        cartCount = 0;
+                    }
                     Integer currentCount = currentItemCountMap.get(formItem.getId());
                     return formItem.getCount() + cartCount > currentCount;    // 수량이 불충분한지 검사
                 });

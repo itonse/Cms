@@ -28,6 +28,6 @@ public class ProductSearchService {
 
     // 상품 여러개 조회하기
     public List<Product> getListByProductIds(List<Long> productIds) {
-        return productRepository.findAllById(productIds);
+        return productRepository.findAllByIdIn(productIds);
     }
 }
