@@ -63,3 +63,8 @@ Content-Type: application/json
   "email": "govl3dnjs@gmail.com",
   "password": "pw"
 }
+
+### 회원 정보 조회 (셀러)
+GET http://localhost:8081/seller/getInfo
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJV0xBUE82M3JGVFM1eEYrY2xxb0g4WWQ0WHFUc1NzODhOTmNRTVZ3TkdnPSIsImp0aSI6ImxhdjczSFhHR0ZpK2V3dEFsQzFWaFE9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjkwMzYwMDcwLCJleHAiOjE2OTA0NDY0NzB9.EWbKCUHmI5i_nBCd1DetNQ32PQHnKkWYz5_THFF34mk
