@@ -25,9 +25,8 @@ public class RedisClient {   // 클래스 타입 대로 데이터를 넣고 빼�
      * 키와 클래스 타입을 받아
      * Redis에서 해당 key에 대응하는 값을 조회한 후 원하는 타입으로 변환하여 반환
      * @param key : 타입 별 키
-     * @param classType  : 클래스 타입
-     * @return
-     * @param <T> : 저장된 데이터를 classType 으로 반환
+     * @param classType  : 반환하고자 하는 클래스 타입
+     * @return <T> : 저장된 데이터를 classType 으로 반환
      */
     public <T> T get(Long key, Class<T> classType) {     // 편리성을 위해 만든 메소드
         return get(key.toString(), classType);     // 키가 Long 타입일 시, String 타입으로 변환해 아래 메소드 실행

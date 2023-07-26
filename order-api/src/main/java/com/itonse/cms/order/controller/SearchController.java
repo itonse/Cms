@@ -22,7 +22,7 @@ public class SearchController {
     public ResponseEntity<List<ProductDto>> searchByName(@RequestParam String name) {
         return ResponseEntity.ok(
                 productSearchService.searchByName(name).stream()
-                        .map(ProductDto::withoutItemsfrom).collect(Collectors.toList())
+                        .map(ProductDto::withoutItemsFrom).collect(Collectors.toList())
         );
     }
 

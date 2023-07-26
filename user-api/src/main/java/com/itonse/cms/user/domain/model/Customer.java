@@ -28,7 +28,7 @@ public class Customer extends BaseEntity {
     private String email;
     private String name;
     private String password;
-    private String phone;;
+    private String phone;
     private LocalDate birth;   // "yyyy-MM-dd"
 
     private LocalDateTime verifyExpiredAt;   // 인증 만료 기한 (1일)

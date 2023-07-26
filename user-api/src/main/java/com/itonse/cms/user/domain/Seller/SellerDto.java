@@ -1,6 +1,5 @@
 package com.itonse.cms.user.domain.Seller;
 
-import com.itonse.cms.user.domain.model.Customer;
 import com.itonse.cms.user.domain.model.Seller;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
