@@ -36,20 +36,14 @@ public class CartApplication {
         }
         Cart cart = cartService.getCart(customerId);    // 고객의 카트 가져오기
 
-        if (cart != null && !addAble(cart, product, form)) {
+        if (!addAble(cart, product, form)) {
             throw new CustomException(ITEM_COUNT_NOT_ENOUGH);   // 상품의 수량 부족
         }
 
         return cartService.addCart(customerId, form);
     }
 
-    /**
-     * 엣지 케이스
-     *
-     * @param customerId
-     * @param cart
-     * @return
-     */
+    // 엣지 케이스
     public Cart updateCart(Long customerId, Cart cart) {
         // 실질적으로 변하는 데이터
         // 상품의 삭제, 수량 변경
@@ -61,6 +55,7 @@ public class CartApplication {
     // 2. 상품의 가격이나 수량이 변동 된다.
     public Cart getCart(Long customerId) {
         Cart cart =  refreshCart(cartService.getCart(customerId));
+        cartService.putCart(cart.getCustomerId(), cart);
         Cart returnCart = new Cart();
 
         returnCart.setCustomerId(customerId);
@@ -78,7 +73,7 @@ public class CartApplication {
         cartService.putCart(customerId, null);
     }
 
-    private Cart refreshCart(Cart cart) {
+    protected Cart refreshCart(Cart cart) {
         // 1. 상품이나 상품의 아이템의 정보, 가격, 수량이 변경되었는지 체크하고
         // 그에 맞는 알람을 제공해준다.
         // 2. 상품의 수량, 가격을 임의로 변경한다.
@@ -151,7 +146,6 @@ public class CartApplication {
                 cart.addMessage(builder.toString());
             }
         }
-        cartService.putCart(cart.getCustomerId(), cart);
         return cart;
     }
 

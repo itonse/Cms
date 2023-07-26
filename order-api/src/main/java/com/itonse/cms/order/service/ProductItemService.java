@@ -19,6 +19,11 @@ public class ProductItemService {
     private final ProductRepository productRepository;
     private final ProductItemRepository productItemRepository;
 
+    // Get And Save 전략 (먼저 가져오고 수량 변동)
+    @Transactional
+    public ProductItem getProductItem(Long id) {
+        return productItemRepository.getById(id);
+    }
 
     @Transactional
     public Product addProductItem(Long sellerId, AddProductItemForm form) {
