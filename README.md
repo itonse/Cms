@@ -1,7 +1,7 @@
 ## 개요
 간단한 커머스 프로젝트
 
-Use : String, Jpa, Mysql, Redis, Docker, AWS, 
+Use : Spring + JPA, Mysql, Redis, Docker 
 
 Goal: 셀러와 구매자 사이를 중개해 주는 커머스 서버를 구축한다.
 
